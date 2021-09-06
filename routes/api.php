@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+///group all user Auth route
+Route::prefix('user')->group(function () {
+    Route::post('/register',[AuthController::class,'register'])->name('register');
+    Route::post('/login',[AuthController::class,'login'])->name('login');
+    // Route::post('users/{id}', function ($id) {return 'User'.$id; }); still work on it 
 });
+Route::match(['get', 'post'], '/user/profile', function ($id) {
+
+});
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
