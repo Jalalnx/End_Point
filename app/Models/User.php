@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Reports;
 
 /**
  * App\Models\User
@@ -42,6 +43,10 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|User civillian()
+ * @method static \Illuminate\Database\Eloquent\Builder|User admins()
+ * @property-read \Illuminate\Database\Eloquent\Collection|User[] $userNumber
+ * @property-read int|null $user_number_count
  */
 class User extends Authenticatable
 {
@@ -52,6 +57,23 @@ class User extends Authenticatable
         'password',
 
     ];
+
+    public function scopeCivillian($query){
+        return $query->where('is_admin',0);
+    }
+    public function scopeAdmins($query){
+        return $query->where('is_admin',1);
+    }
+
+    public function userNumber()
+    {
+        return $this->hasMany(User::class);
+    }
+    public function getNameAtrriute(){
+        return $this->first_name.' '.$this->last_name;
+    }
+
+   
 
     /**
      * The attributes that should be cast.
