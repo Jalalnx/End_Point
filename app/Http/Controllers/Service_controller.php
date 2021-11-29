@@ -14,6 +14,7 @@ class Service_controller extends Controller
        $Total_reports = Reports::all();
        $Total_users = User::all();
        $Reports_collection= collect($Total_reports);
+       
        $userCollection = collect( $Total_users);
        $Reports_collection= collect($Total_reports);
 
