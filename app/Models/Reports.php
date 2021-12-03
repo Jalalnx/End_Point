@@ -33,6 +33,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Reports whereReportType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Reports whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Reports whereUserID($value)
+ * @property int $status
+ * @property string $Data_Time
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereStatus($value)
  */
 class Reports extends Model
 {

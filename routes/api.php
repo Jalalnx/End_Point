@@ -33,6 +33,8 @@ Route::prefix('user')->group(function () {
         Route::put('password',[AuthController::class,'upadtePassword'])->name('upadtePassword');
         Route::get('index',[civillianUSerController::class,'index'])->name('index');
         Route::apiResource('Reports',ReportsController::class);
+        Route::get('Catogery',[ReportsController::class,'ReportsByCatogery'])->name('ReportsByCatogery');
+
 
     });
 });

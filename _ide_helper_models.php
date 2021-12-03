@@ -1,14 +1,52 @@
 <?php
 
-namespace App\Models;
+// @formatter:off
+/**
+ * A helper file for your Eloquent Models
+ * Copy the phpDocs from this file to the correct Model,
+ * And remove them from this file, to prevent double declarations.
+ *
+ * @author Barry vd. Heuvel <barryvdh@gmail.com>
+ */
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\Reports;
 
+namespace App\Models{
+/**
+ * App\Models\Reports
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports query()
+ * @mixin \Eloquent
+ * @property int $id
+ * @property int $userID
+ * @property string|null $description
+ * @property string $Report_type
+ * @property string $Report_Loction
+ * @property string $Report_Level
+ * @property string $coordinates
+ * @property string $Data-Time
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\ReportsFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereCoordinates($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereDataTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereReportLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereReportLoction($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereReportType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereUserID($value)
+ * @property int $status
+ * @property string $Data_Time
+ * @method static \Illuminate\Database\Eloquent\Builder|Reports whereStatus($value)
+ */
+	class Reports extends \Eloquent {}
+}
+
+namespace App\Models{
 /**
  * App\Models\User
  *
@@ -50,39 +88,6 @@ use App\Models\Reports;
  * @property string $img_url
  * @method static \Illuminate\Database\Eloquent\Builder|User whereImgUrl($value)
  */
-class User extends Authenticatable
-{
-    use HasApiTokens, HasFactory, Notifiable;
-
-    protected $guarded= [];
-    protected $hidden = [
-        'password',
-
-    ];
-
-    public function scopeCivillian($query){
-        return $query->where('is_admin',0);
-    }
-    public function scopeAdmins($query){
-        return $query->where('is_admin',1);
-    }
-
-    public function userNumber()
-    {
-        return $this->hasMany(User::class);
-    }
-    public function getNameAtrriute(){
-        return $this->first_name.' '.$this->last_name;
-    }
-
-   
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+	class User extends \Eloquent {}
 }
+

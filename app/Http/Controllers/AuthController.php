@@ -14,6 +14,9 @@ class AuthController extends Controller
     // thawing-peak-24216
     // Mcfc4YM8ROavO6yL8J68Yy1NfDrHWwXrC/UfqSW4ixU=
 
+
+
+   
     protected $maxAttempts = 3; // Default is 5
     protected $decayMinutes = 2; // Default is 1
 

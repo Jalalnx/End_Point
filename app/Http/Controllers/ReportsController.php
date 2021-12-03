@@ -14,6 +14,11 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function ReportsByCatogery(Request $request)
+    {
+        return ReportsResource::collection(Reports::whereIn('status',$request->only('status'))->get());
+    }
+
     public function index()
     {
         return ReportsResource::collection(Reports::all());
