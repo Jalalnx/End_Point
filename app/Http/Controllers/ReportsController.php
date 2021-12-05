@@ -21,7 +21,13 @@ class ReportsController extends Controller
 
     public function index()
     {
-        return ReportsResource::collection(Reports::all());
+        // \Cache::forget('reports');
+       if(   $reports =\Cache::get('reports'))
+        return ReportsResource::collection($reports);
+
+        $reports =Reports::all();
+        \Cache::set('reports',$reports ,30*60);//30min
+        return ReportsResource::collection($reports);
     }
 
     /**
